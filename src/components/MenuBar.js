@@ -12,23 +12,29 @@ const MenuBar = (props) => {
   this component be made aware of what is currently the active menu item?
 
   */
+ 
+  const setActive = (e) => {
+    [...e.currentTarget.parentElement.children].forEach(a => a.className = 'item ')
+    e.currentTarget.className += 'active'
+    props.renderBody(e.currentTarget.id)
+  }
 
   return (
     <div className="ui four item menu">
-      <a className="item active" id="profile">
+      <a className="item active" id="profile" onClick={setActive}>
         <i className="user large icon" id="profile"/>
       </a>
 
-      <a className="item" id="photo">
+      <a className="item" id="photo" onClick={setActive}>
         <i className="photo large icon" id="photo"/>
       </a>
 
-      <a className="item" id="cocktail">
+      <a className="item" id="cocktail" onClick={setActive}>
         <i className="cocktail large icon" id="cocktail"/>
       </a>
 
-      <a className="item" id="pokemon"> 
-        <i className=" themeisle large icon" id="pokemon"/>
+      <a className="item" id="pokemon" onClick={setActive}> 
+        <i className="themeisle large icon" id="pokemon"/>
       </a>
     </div>
   )
